@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "lookey.com.pickyou"
+        minSdkVersion 22
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi' , 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    signingConfigs {
+        config {
+            keyAlias 'lookey'
+            keyPassword 'py6575741'
+            storeFile file('lookey.jks')
+            storePassword 'py6575741'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = rootProject.name + "_" + new Date().format("yyyyMMdd_HHmm") + "_v" + defaultConfig.versionName + "_" + defaultConfig.versionCode + "_" + buildType.name + ".apk"
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //沉浸式效果
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+
+    implementation 'com.dalong:marqueeview:1.0.1'
+
+    // bugly可以解决INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113
+    // 这个报错,cpu so加载问题导致app在模拟器上无法运行,原因是gsyVideoPlayer-java使用了so文件,涉及到cpu型号问题,而bugly配置的
+    // 时候设置了支持的SO库架构
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+}

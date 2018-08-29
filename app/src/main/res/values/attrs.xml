@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MarqueeView">
+        <attr name="textcolor" format="integer"/>
+        <attr name="textSize" format="float"/>
+        <attr name="isRepeat" format="boolean"/>
+        <attr name="marqueebackground" format="integer"/>
+        <attr name="startPoint" format="integer"/>
+        <attr name="direction" format="integer"/>
+        <attr name="speed" format="integer"/>
+    </declare-styleable>
+
+
+</resources>

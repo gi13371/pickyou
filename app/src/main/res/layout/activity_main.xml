@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70px"
+        android:layout_marginRight="70px"
+
+        android:layout_marginTop="50dp"
+        android:hint="请输入您需要展示的内容(人名,暗号?)"
+        />
+    <CheckBox
+        android:id="@+id/cb_gun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="70px"
+        android:text="一律滚动字体(字体长度小于3默认不滚动)"
+        />
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="18sp"
+        android:text="确    定"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorAccent"
+        />
+    <com.dalong.marqueeview.MarqueeView
+        android:id="@+id/tv_name"
+        app:textcolor="@color/colorRed"
+        android:visibility="gone"
+    app:textSize="250sp"
+    app:startPoint="end"
+    app:isRepeat="true"
+    app:direction="left"
+    app:speed="50"
+        android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/tv_name2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="230sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorRed"
+        android:background="@color/white"
+        />
+</LinearLayout>
