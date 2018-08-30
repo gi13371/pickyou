@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Beta.checkUpgrade();
+        //屏幕长亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mImmersionBar = ImmersionBar.with(this);
         mImmersionBar.transparentBar().init();
         checkBox=findViewById(R.id.cb_gun);
@@ -51,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         tvConfirm=findViewById(R.id.tv_confirm);
         tvName2=findViewById(R.id.tv_name2);
 
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        int width = outMetrics.widthPixels-10;
+        tvName2.setTextSize(TypedValue.COMPLEX_UNIT_PX,width/3f);
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,11 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        WindowManager manager = this.getWindowManager();
-//        DisplayMetrics outMetrics = new DisplayMetrics();
-//        manager.getDefaultDisplay().getMetrics(outMetrics);
-//        int width = outMetrics.widthPixels-100;
-//        tvName.setTextSize(width/3f);
+
+
 
 
 
